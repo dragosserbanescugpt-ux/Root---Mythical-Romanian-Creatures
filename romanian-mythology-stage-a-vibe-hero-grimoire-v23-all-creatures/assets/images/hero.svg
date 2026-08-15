@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000" role="img" aria-labelledby="t d">
+<title id="t">Creaturi din Mitologia Românească</title>
+<desc id="d">Placeholder vizual pentru hero, etapa A.</desc>
+<defs>
+  <radialGradient id="g" cx="50%" cy="40%" r="65%">
+    <stop offset="0%" stop-color="#2b5151"/>
+    <stop offset="100%" stop-color="#102b2d"/>
+  </radialGradient>
+</defs>
+<rect width="1400" height="1000" fill="url(#g)"/>
+<circle cx="1040" cy="240" r="115" fill="#f1eadc" opacity=".92"/>
+<circle cx="1085" cy="210" r="115" fill="#102b2d"/>
+<path d="M150 830 C320 620 520 610 700 720 C870 825 1050 690 1240 500" fill="none" stroke="#79989c" stroke-width="45" opacity=".45"/>
+<path d="M120 800L270 410L340 800M1050 800L1130 400L1210 800" fill="#638066" opacity=".7"/>
+<circle cx="560" cy="380" r="72" fill="#f1eadc"/>
+<path d="M490 470Q560 410 630 470L690 780Q560 835 430 780Z" fill="#f1eadc"/>
+<path d="M500 480L360 560M620 480L760 560" stroke="#f1eadc" stroke-width="30" stroke-linecap="round"/>
+<circle cx="820" cy="430" r="52" fill="#f1eadc"/>
+<path d="M770 500Q820 455 870 500L910 735Q820 775 730 735Z" fill="#f1eadc"/>
+<circle cx="360" cy="470" r="48" fill="#f1eadc"/>
+<path d="M315 535Q360 495 405 535L440 720Q360 755 280 720Z" fill="#f1eadc"/>
+<text x="80" y="100" fill="#c49a55" font-family="Georgia, serif" font-size="34" letter-spacing="6">ETAPA A · HERO PLACEHOLDER</text>
+</svg>
