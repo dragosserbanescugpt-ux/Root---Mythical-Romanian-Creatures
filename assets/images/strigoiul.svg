@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="t d">
+<title id="t">Strigoiul</title>
+<desc id="d">Placeholder vizual pentru etapa A. Ilustrația finală va fi integrată în etapa B.</desc>
+<rect width="1200" height="900" fill="#123033"/>
+<circle cx="600" cy="420" r="260" fill="none" stroke="#c49a55" stroke-width="3" opacity=".45"/>
+<circle cx="600" cy="420" r="180" fill="none" stroke="#f1eadc" stroke-width="2" opacity=".18"/>
+<path d="M160 150h120M220 90v120M920 150h120M980 90v120M160 750h120M220 690v120M920 750h120M980 690v120" stroke="#c49a55" stroke-width="4" opacity=".4"/>
+<path d="M375 575 Q600 360 825 575" fill="none" stroke="#c49a55" stroke-width="34" stroke-linecap="round" opacity=".9"/>
+<circle cx="600" cy="335" r="86" fill="#f1eadc" opacity=".94"/>
+<path d="M520 435 Q600 380 680 435 L735 650 Q600 710 465 650Z" fill="#f1eadc" opacity=".94"/>
+<text x="600" y="95" fill="#c49a55" text-anchor="middle" font-family="Georgia, serif" font-size="38" letter-spacing="8">10</text>
+<text x="600" y="795" fill="#f1eadc" text-anchor="middle" font-family="Georgia, serif" font-size="58">Strigoiul</text>
+<text x="600" y="845" fill="#b9c8c5" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" letter-spacing="3">ILUSTRAȚIE FINALĂ · ETAPA B</text>
+</svg>
