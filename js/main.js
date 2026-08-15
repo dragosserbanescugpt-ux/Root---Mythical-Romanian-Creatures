@@ -157,21 +157,183 @@
     });
   }
 
+  // English editorial pass: keep Romanian names in the bilingual titles and aliases,
+  // but use the agreed English names in the descriptive copy. Strigoi, Samca and
+  // Mătcălău remain Romanian. Romanian cultural terms are glossed in parentheses.
+  if (isEnglish) {
+    const replaceText = (root, replacements) => {
+      if (!root) return;
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+      nodes.forEach(node => {
+        let text = node.nodeValue;
+        replacements.forEach(([pattern, replacement]) => {
+          text = text.replace(pattern, replacement);
+        });
+        node.nodeValue = text;
+      });
+    };
+
+    replaceText(document.querySelector('.intro__copy'), [
+      [/Balauri/g, 'Dragons']
+    ]);
+
+    const storyEdits = {
+      ielele: [
+        [/\bIele\b/g, 'Enchanted Maidens'],
+        [/hora/g, 'hora (a traditional Romanian circle dance)'],
+        [/“pocire” — supernatural affliction or disfigurement —/g, 'pocire (a traditional Romanian belief in supernatural affliction or disfigurement)'],
+        [/Doamna Irodia/g, 'Lady Irodia']
+      ],
+      ursitoarele: [
+        [/The Ursitoare/g, 'The Fates'],
+        [/the Ursitoare/g, 'the Fates'],
+        [/eldest Ursitoare/g, 'eldest Fate'],
+        [/third Ursitoare/g, 'third Fate'],
+        [/\bUrsitoare\b/g, 'Fate'],
+        [/Soartea/g, 'Fate'],
+        [/Moartea/g, 'Death']
+      ],
+      'muma-padurii': [
+        [/Muma Pădurii is/g, 'The Mother of the Forest is'],
+        [/attributed to Muma Pădurii/g, 'attributed to the Mother of the Forest'],
+        [/“pocire,”/g, 'pocire (a traditional Romanian belief in supernatural affliction or disfigurement),']
+      ],
+      'zanele-bune': [
+        [/the Zânele Bune/g, 'the Good Fairies'],
+        [/a Zână a Zânelor/g, 'a Queen of the Fairies'],
+        [/the zmei/g, 'the Ogres'],
+        [/the Zâne are/g, 'the Good Fairies are']
+      ],
+      brehnele: [
+        [/The Brehne occupy/g, 'The Brehne Spirits occupy'],
+        [/than the Iele or Strigoi/g, 'than the Enchanted Maidens or Strigoi'],
+        [/the Brehne\./g, 'the Brehne Spirits.'],
+        [/“mischievous spiriduși.”/g, '“mischievous imps.”'],
+        [/the Spiriduș presented separately/g, 'the Imp presented separately']
+      ],
+      'stima-apei': [
+        [/Știma Apei is/g, 'The Water Spirit is'],
+        [/with an altiță and/g, 'with an altiță (an embroidered shoulder panel specific to Romanian folk dress) and'],
+        [/its own știmă\./g, 'its own water spirit.'],
+        [/During drought, Știma emerges/g, 'During drought, the Water Spirit emerges']
+      ],
+      'sarpele-casei': [
+        [/Șarpele Casei is/g, 'The Guardian House Snake is']
+      ],
+      samca: [
+        [/“samcă” or “spasm.”/g, 'samcă (the traditional Romanian name for an illness attributed to Samca) or “spasm.”']
+      ],
+      'ceasul-cel-rau': [
+        [/Ceasul cel Rău shows/g, 'The Evil Hour shows'],
+        [/The Ceasurile Rele are/g, 'The Evil Hours are'],
+        [/It can “poci” a person, meaning that it can cause a physical or spiritual disturbance attributed to a supernatural encounter\./g, 'It can cause pocire (a traditional Romanian term for a supernatural physical or spiritual affliction).'],
+        [/touched by Ceasul cel Rău/g, 'touched by the Evil Hour']
+      ],
+      varcolacul: [
+        [/The Vârcolac of Romanian traditions/g, 'The Werewolf of Romanian traditions'],
+        [/the action of the Vârcolac/g, 'the action of the Werewolf'],
+        [/a human vârcolac/g, 'a human werewolf'],
+        [/the vârcolac approaches/g, 'the werewolf approaches'],
+        [/Beliefs about the Vârcolac/g, 'Beliefs about the Werewolf']
+      ],
+      stafia: [
+        [/Stafia is presented/g, 'The Ghost is presented'],
+        [/Stafia is defined/g, 'the Ghost is defined'],
+        [/Stafia becomes/g, 'the Ghost becomes'],
+        [/connects Stafia/g, 'connects the Ghost']
+      ],
+      zburatorul: [
+        [/Zburătorul is/g, 'The Flyer is'],
+        [/a scaly balaur/g, 'a scaly dragon'],
+        [/called “lipitură” or even “Zburătorul.”/g, 'called lipitură (a traditional Romanian term for an affliction attributed to the Flyer), or even “Zburătorul” (literally “the Flyer”).'],
+        [/Zburătorul thus belongs/g, 'The Flyer thus belongs']
+      ],
+      zmeul: [
+        [/The Zmeu of fairy tales/g, 'The Ogre of fairy tales'],
+        [/the Balaur/g, 'the Dragon'],
+        [/adversaries of Făt-Frumos/g, 'adversaries of Făt-Frumos (the archetypal handsome hero of Romanian fairy tales)'],
+        [/Zmei live/g, 'Ogres live'],
+        [/The Zmeoaica, the maternal figure of their kind,/g, 'The Zmeoaica (the female or maternal ogre),'],
+        [/The Zmeu belongs/g, 'The Ogre belongs'],
+        [/the fight with Făt-Frumos/g, 'the fight with the hero'],
+        [/the Zmeu is often/g, 'the Ogre is often']
+      ],
+      balaurul: [
+        [/the Balaur has/g, 'the Dragon has'],
+        [/between the balauri of stories and the balauri of the clouds/g, 'between the Dragons of stories and the Dragons of the clouds'],
+        [/The fairy-tale Balaur/g, 'The fairy-tale Dragon'],
+        [/balauri rise/g, 'Dragons rise'],
+        [/controlled by Solomonari/g, 'controlled by Weather Sorcerers'],
+        [/road of the Balauri/g, 'road of the Dragons'],
+        [/birth of the Balaur/g, 'birth of the Dragon'],
+        [/transform into a Balaur/g, 'transform into a Dragon']
+      ],
+      solomonarul: [
+        [/Solomonarul is/g, 'The Weather Sorcerer is'],
+        [/future Solomonari/g, 'future Weather Sorcerers'],
+        [/school called Solomanță,/g, 'school called Solomanță (a hidden school of magical initiation),'],
+        [/control clouds and Balauri/g, 'control clouds and Dragons'],
+        [/a Balaur and directs/g, 'a Dragon and directs'],
+        [/book of “solomonărie”/g, 'book of solomonărie (the magical lore of the Weather Sorcerers)'],
+        [/draw a Balaur/g, 'draw a Dragon'],
+        [/The Solomonar may/g, 'The Weather Sorcerer may'],
+        [/other Solomonari/g, 'other Weather Sorcerers']
+      ],
+      spiridusul: [
+        [/Olinescu’s Spiriduș/g, 'Olinescu’s Imp'],
+        [/called “anciu” in Bukovina/g, 'called anciu (a traditional Bukovinian term for a lucky coin) in Bukovina'],
+        [/a spiriduș or to be a spiriduș itself/g, 'an imp or to be an imp itself']
+      ],
+      'piaza-rea': [
+        [/Piaza Rea is/g, 'The Evil Omen is'],
+        [/as Piaza Rea having/g, 'as the Evil Omen having'],
+        [/embodiments of Piaza Rea/g, 'embodiments of the Evil Omen'],
+        [/Olinescu opposes Piaza Rea to Piaza Bună/g, 'Olinescu contrasts the Evil Omen with the Good Omen']
+      ],
+      'marti-seara': [
+        [/Marți-seara is/g, 'The Tuesday-Night Crone is']
+      ],
+      matcalaul: [
+        [/the practice of “mâtcălirea”/g, 'the practice of mâtcălirea (a Romanian ritual of forming ceremonial sisterhood)']
+      ]
+    };
+
+    Object.entries(storyEdits).forEach(([id, replacements]) => {
+      replaceText(document.querySelector(`#${id} .creature__story`), replacements);
+    });
+
+    replaceText(document.querySelector('#solomonarul .creature__tagline'), [
+      [/Balauri/g, 'Dragons']
+    ]);
+  }
+
   document.querySelectorAll('.project-credit [data-reveal]').forEach(el => {
     if (reduceMotion) el.classList.add('is-visible');
     else requestAnimationFrame(() => el.classList.add('is-visible'));
   });
 
-  const headerInner = document.querySelector('.site-header__inner');
-  if (headerInner && !document.querySelector('.language-switch')) {
-    const switcher = document.createElement('div');
-    switcher.className = 'language-switch';
-    switcher.setAttribute('aria-label', isEnglish ? 'Choose language' : 'Alege limba');
-    switcher.innerHTML = `
+  const languageMarkup = () => `
       <a href="${roUrl}" data-lang-choice="ro" class="${isEnglish ? '' : 'is-active'}" lang="ro"${isEnglish ? '' : ' aria-current="page"'}>RO</a>
       <span aria-hidden="true">/</span>
       <a href="${enUrl}" data-lang-choice="en" class="${isEnglish ? 'is-active' : ''}" lang="en"${isEnglish ? ' aria-current="page"' : ''}>EN</a>`;
+
+  const headerInner = document.querySelector('.site-header__inner');
+  if (headerInner && !document.querySelector('.language-switch--header')) {
+    const switcher = document.createElement('div');
+    switcher.className = 'language-switch language-switch--header';
+    switcher.setAttribute('aria-label', isEnglish ? 'Choose language' : 'Alege limba');
+    switcher.innerHTML = languageMarkup();
     headerInner.appendChild(switcher);
+  }
+
+  if (mainNav && !mainNav.querySelector('.language-switch--menu')) {
+    const menuSwitcher = document.createElement('div');
+    menuSwitcher.className = 'language-switch language-switch--menu';
+    menuSwitcher.setAttribute('aria-label', isEnglish ? 'Choose language' : 'Alege limba');
+    menuSwitcher.innerHTML = languageMarkup();
+    mainNav.appendChild(menuSwitcher);
   }
 
   document.querySelectorAll('[data-lang-choice]').forEach(link => {
