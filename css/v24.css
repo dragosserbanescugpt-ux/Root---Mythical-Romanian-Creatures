@@ -166,6 +166,8 @@
 .language-switch a.is-active { text-decoration: underline; text-underline-offset: .2em; }
 .language-switch span { color: rgba(208,161,90,.7); }
 
+.language-switch--menu { display: none; }
+
 body.language-modal-open { overflow: hidden; }
 
 .language-modal {
@@ -284,11 +286,37 @@ body.language-modal-open { overflow: hidden; }
 }
 
 @media (max-width: 720px) {
-  .language-switch {
+  .language-switch--header {
     margin-left: auto;
     margin-right: .2rem;
     order: 2;
   }
+
+  .language-switch--menu {
+    display: flex;
+    justify-content: center;
+    align-self: stretch;
+    margin: .35rem .25rem .1rem;
+    padding: .6rem .8rem;
+    border-color: rgba(44,63,66,.18);
+    background: rgba(255,255,255,.28);
+    order: initial;
+  }
+
+  .main-nav .language-switch--menu a {
+    flex: 0 0 auto;
+    padding: .35rem .6rem;
+    color: var(--ink-soft);
+  }
+
+  .main-nav .language-switch--menu a:hover,
+  .main-nav .language-switch--menu a:focus-visible,
+  .main-nav .language-switch--menu a.is-active {
+    color: var(--clay);
+    background: rgba(255,255,255,.58);
+  }
+
+  .main-nav .language-switch--menu span { color: var(--gold); }
   .nav-toggle { order: 3; }
 }
 
