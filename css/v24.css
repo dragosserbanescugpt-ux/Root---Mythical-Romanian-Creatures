@@ -1,0 +1,148 @@
+/* V24 — Creaturi Mitologice Românești + Root Crafting */
+.hero h1 {
+  font-family: "Cormorant Garamond Local", Georgia, "Times New Roman", serif !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 880px);
+  max-width: 880px;
+  margin: 0 auto 1.35rem !important;
+  white-space: normal !important;
+  text-align: center;
+  line-height: .86 !important;
+}
+
+.hero-title__primary,
+.hero-title__secondary {
+  display: block;
+  font-family: "Cormorant Garamond Local", Georgia, "Times New Roman", serif !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+}
+
+.hero-title__primary {
+  font-size: clamp(4.7rem, 8vw, 8rem);
+  color: #f4e4c4;
+}
+
+.hero-title__secondary {
+  margin-top: .08em;
+  font-size: clamp(2.75rem, 4.8vw, 4.9rem);
+  color: #d0a15a;
+  line-height: .95;
+  white-space: nowrap;
+}
+
+.project-credit {
+  width: min(var(--max), calc(100% - 2rem));
+  margin: 2rem auto 0;
+  padding: clamp(1.5rem, 4vw, 2.7rem);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: clamp(1.15rem, 3vw, 2.5rem);
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(119, 86, 43, .28);
+  border-radius: 28px;
+  background: linear-gradient(rgba(246,235,211,.90), rgba(246,235,211,.90)), url("../assets/images/decor/parchment-bg.png") center/cover no-repeat;
+  box-shadow: 0 18px 45px rgba(37,24,17,.09);
+}
+
+.project-credit::before,
+.project-credit::after {
+  content: "";
+  position: absolute;
+  width: 210px;
+  height: 210px;
+  pointer-events: none;
+  background: url("../assets/images/decor/corners.png") center/contain no-repeat;
+  opacity: .075;
+}
+
+.project-credit::before { left: -80px; top: -82px; }
+.project-credit::after { right: -80px; bottom: -82px; transform: rotate(180deg); }
+
+.project-credit__ornament {
+  width: 4.3rem;
+  height: 4.3rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(119,86,43,.35);
+  border-radius: 50%;
+  color: var(--clay);
+  font-size: 1.45rem;
+  background: rgba(255,255,255,.32);
+}
+
+.project-credit__copy { position: relative; z-index: 1; max-width: 49rem; }
+
+.project-credit__copy h2 {
+  margin: .25rem 0 .7rem;
+  font-family: "MedievalSharpLocal", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(1.7rem, 3vw, 2.55rem);
+  line-height: 1.12;
+}
+
+.project-credit__copy > p:last-child {
+  margin: 0;
+  max-width: 47rem;
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.project-credit__cta { position: relative; z-index: 1; min-width: 220px; text-align: center; }
+
+.project-credit__instagram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .25rem;
+  min-height: 48px;
+  padding: .9rem 1.2rem;
+  border: 1px solid rgba(119,86,43,.48);
+  border-radius: 999px;
+  background: var(--ink);
+  color: #f6ead2;
+  text-decoration: none;
+  font-family: "Cormorant Garamond Local", Georgia, serif;
+  font-size: 1.03rem;
+  font-weight: 600;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.project-credit__instagram:hover,
+.project-credit__instagram:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(21,32,31,.18);
+}
+
+.project-credit__small { margin: .65rem 0 0; color: var(--muted); font-size: .88rem; }
+
+@media (max-width: 900px) {
+  .hero-title__primary { font-size: clamp(3.8rem, 10vw, 5.8rem); }
+  .hero-title__secondary { font-size: clamp(2.25rem, 6vw, 3.55rem); }
+  .project-credit { grid-template-columns: auto 1fr; }
+  .project-credit__cta { grid-column: 1 / -1; }
+}
+
+@media (max-width: 620px) {
+  .hero h1 { width: 100%; }
+  .hero-title__primary { font-size: clamp(3.2rem, 14vw, 4.6rem); }
+  .hero-title__secondary { font-size: clamp(1.72rem, 7vw, 2.55rem); white-space: normal; }
+  .project-credit {
+    width: min(100% - 1rem, var(--max));
+    margin-top: 1rem;
+    padding: 1.25rem;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .project-credit__ornament { margin: 0 auto; }
+  .project-credit__copy > p:last-child { font-size: 1rem; }
+  .project-credit__instagram { width: 100%; }
+}
