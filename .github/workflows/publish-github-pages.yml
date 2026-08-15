@@ -1,0 +1,31 @@
+name: Publish GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: github-pages-publish
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Publish website folder to gh-pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          SITE_DIR="romanian-mythology-stage-a-vibe-hero-grimoire-v23-all-creatures"
+          DEPLOY_SHA="$(git subtree split --prefix="$SITE_DIR" HEAD)"
+          git push origin "$DEPLOY_SHA:refs/heads/gh-pages" --force
