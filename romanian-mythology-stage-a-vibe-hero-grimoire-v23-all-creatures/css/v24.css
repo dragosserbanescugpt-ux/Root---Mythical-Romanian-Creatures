@@ -278,6 +278,18 @@ body.language-modal-open { overflow: hidden; }
 
 .language-modal__actions button span { font-size: 1.35rem; }
 
+/* English quick index: visually separate the Romanian name from its English translation. */
+html[lang="en"] .creature-index__item b small {
+  margin-left: .42em;
+}
+
+html[lang="en"] .creature-index__item b small::before {
+  content: "·";
+  display: inline-block;
+  margin-right: .42em;
+  color: var(--gold);
+}
+
 @media (max-width: 900px) {
   .hero-title__primary { font-size: clamp(3.8rem, 10vw, 5.8rem); }
   .hero-title__secondary { font-size: clamp(2.25rem, 6vw, 3.55rem); }
